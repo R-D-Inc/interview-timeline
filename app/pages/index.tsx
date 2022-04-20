@@ -28,9 +28,9 @@ export default function Home(props: { users: User[] }) {
             const list = [];
             for (let i = 0; i < props.users.length; i++) {
               list.push(
-                <button onClick={showHospital(props.users[i].id)}>
+                <li>
                   {props.users[i].name}
-                </button>
+                </li>
               );
             }
             return <ul>{list}</ul>;
