@@ -6,8 +6,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { type } from 'os'
 import { Context } from 'vm'
-import { db } from '../libs/firebase'
-import styles from '../styles/Home.module.css'
+import { db } from '../../libs/firebase'
+import styles from '../../styles/Home.module.css'
 
 type User = {
   id: string

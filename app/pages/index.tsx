@@ -2,6 +2,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { db } from "../libs/firebase";
 import styles from "../styles/Home.module.css";
@@ -29,7 +30,11 @@ export default function Home(props: { users: User[] }) {
             for (let i = 0; i < props.users.length; i++) {
               list.push(
                 <li>
-                  {props.users[i].name}
+                  <Link href={{ pathname: '/users/[uid]', query: { uid: props.users[i].id } }}>
+                    <a>
+                    {props.users[i].name}
+                    </a>
+                  </Link>
                 </li>
               );
             }
