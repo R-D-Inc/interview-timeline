@@ -30,11 +30,7 @@ export default function Home(props: { users: User[] }) {
             for (let i = 0; i < props.users.length; i++) {
               list.push(
                 <li>
-                  <Link href={{ pathname: '/users/[uid]', query: { uid: props.users[i].id } }}>
-                    <a>
-                    {props.users[i].name}
-                    </a>
-                  </Link>
+                  {props.users[i].name}
                 </li>
               );
             }
