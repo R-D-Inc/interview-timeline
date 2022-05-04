@@ -1,13 +1,10 @@
-import { collection, getDocs } from "firebase/firestore";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { db } from "../libs/firebase";
+import { fetchUsers } from "../libs/users";
 import styles from "../styles/Home.module.css";
 
-type User = {
+export type User = {
   id: string;
   name: string;
 };
@@ -24,8 +21,9 @@ export default function Home(props: { users: User[] }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome</h1>
 
+        <button>{'<<'}</button>
         <div>
-          {(function () {
+          {(function () {  // fix me
             const list = [];
             for (let i = 0; i < props.users.length; i++) {
               list.push(
@@ -37,36 +35,7 @@ export default function Home(props: { users: User[] }) {
             return <ul>{list}</ul>;
           })()}
         </div>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <button>{'>>'}</button>
       </main>
 
       <footer className={styles.footer}>
@@ -86,16 +55,7 @@ export default function Home(props: { users: User[] }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const colRef = collection(db, "users");
-  const users = [];
-  const usersSnapshot = await getDocs(colRef);
-  for (const userSnapshot of usersSnapshot.docs) {
-    const userDatum = userSnapshot.data();
-    // if (!isUserDatum(userDatum)) {
-    //   throw new Error('Invalid data found.')
-    // }
-    users.push({ id: userSnapshot.id, ...userSnapshot.data() });
-  }
+  const users = await fetchUsers(3, 0)
 
   return {
     props: {

@@ -1,34 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Questions
 
-## Getting Started
+このReact製のプロジェクトはTwitterのようなタイムラインアプリを再現しようとしています。
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. src/pages/index.tsxはuserの一覧を取得して表示していますが、表示部分をloopをよりわかりやすく短く書き直してください。
+2. ユーザー数が100人程度だったとして、このuser一覧にpaginationをつけて10人ずつ表示する様実装してください。
+3. ユーザー数が1,000,000人程度だったとして、このuser一覧にpaginationをつけて10人ずつ表示する様実装してください。
+4. それぞれのユーザーを表すobjectを`User`として型定義していますが、このidを用いて、user一覧の名前をクリックするとusers/[uid]に遷移する様実装してください。
+5. 見た目の設定について、dark modeとlight modeの2種類を持たせたいです。pages/index.tsxにボタンを設置し、これで切り替えができて、全ての画面においてこれが適用される様に実装してください。

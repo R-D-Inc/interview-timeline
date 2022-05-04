@@ -1,0 +1,6 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+}
