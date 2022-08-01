@@ -3,239 +3,239 @@ import { User } from "../pages";
 export const mockUsers: User[] = [
     {
         id: '1',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '2',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '3',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '4',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '5',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '6',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '7',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '8',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '9',
-        name: 'alice'
+        name: 'Alice'
     },
     {
         id: '10',
-        name: 'alice'
+        name: 'Alice'
     },
     {
-        id: '1',
-        name: 'alice'
+        id: '11',
+        name: 'Bob'
     },
     {
-        id: '2',
-        name: 'alice'
+        id: '12',
+        name: 'Bob'
     },
     {
-        id: '3',
-        name: 'alice'
+        id: '13',
+        name: 'Bob'
     },
     {
-        id: '4',
-        name: 'alice'
+        id: '14',
+        name: 'Bob'
     },
     {
-        id: '5',
-        name: 'alice'
+        id: '15',
+        name: 'Bob'
     },
     {
-        id: '6',
-        name: 'alice'
+        id: '16',
+        name: 'Bob'
     },
     {
-        id: '7',
-        name: 'alice'
+        id: '17',
+        name: 'Bob'
     },
     {
-        id: '8',
-        name: 'alice'
+        id: '18',
+        name: 'Bob'
     },
     {
-        id: '9',
-        name: 'alice'
+        id: '19',
+        name: 'Bob'
     },
     {
-        id: '10',
-        name: 'alice'
+        id: '20',
+        name: 'Bob'
     }, {
-        id: '1',
-        name: 'alice'
+        id: '21',
+        name: 'Catherine'
     },
     {
-        id: '2',
-        name: 'alice'
+        id: '22',
+        name: 'Catherine'
     },
     {
-        id: '3',
-        name: 'alice'
+        id: '23',
+        name: 'Catherine'
     },
     {
-        id: '4',
-        name: 'alice'
+        id: '24',
+        name: 'Catherine'
     },
     {
-        id: '5',
-        name: 'alice'
+        id: '25',
+        name: 'Catherine'
     },
     {
-        id: '6',
-        name: 'alice'
+        id: '26',
+        name: 'Catherine'
     },
     {
-        id: '7',
-        name: 'alice'
+        id: '27',
+        name: 'Catherine'
     },
     {
-        id: '8',
-        name: 'alice'
+        id: '28',
+        name: 'Catherine'
     },
     {
-        id: '9',
-        name: 'alice'
+        id: '29',
+        name: 'Catherine'
     },
     {
-        id: '10',
-        name: 'alice'
+        id: '30',
+        name: 'Catherine'
     }, {
-        id: '1',
-        name: 'alice'
+        id: '31',
+        name: 'Daniel'
     },
     {
-        id: '2',
-        name: 'alice'
+        id: '32',
+        name: 'Daniel'
     },
     {
-        id: '3',
-        name: 'alice'
+        id: '33',
+        name: 'Daniel'
     },
     {
-        id: '4',
-        name: 'alice'
+        id: '34',
+        name: 'Daniel'
     },
     {
-        id: '5',
-        name: 'alice'
+        id: '35',
+        name: 'Daniel'
     },
     {
-        id: '6',
-        name: 'alice'
+        id: '36',
+        name: 'Daniel'
     },
     {
-        id: '7',
-        name: 'alice'
+        id: '37',
+        name: 'Daniel'
     },
     {
-        id: '8',
-        name: 'alice'
+        id: '38',
+        name: 'Daniel'
     },
     {
-        id: '9',
-        name: 'alice'
+        id: '39',
+        name: 'Daniel'
     },
     {
-        id: '10',
-        name: 'alice'
+        id: '40',
+        name: 'Daniel'
     },
     {
-        id: '1',
-        name: 'alice'
+        id: '41',
+        name: 'Edward'
     },
     {
-        id: '2',
-        name: 'alice'
+        id: '42',
+        name: 'Edward'
     },
     {
-        id: '3',
-        name: 'alice'
+        id: '43',
+        name: 'Edward'
     },
     {
-        id: '4',
-        name: 'alice'
+        id: '44',
+        name: 'Edward'
     },
     {
-        id: '5',
-        name: 'alice'
+        id: '45',
+        name: 'Edward'
     },
     {
-        id: '6',
-        name: 'alice'
+        id: '46',
+        name: 'Edward'
     },
     {
-        id: '7',
-        name: 'alice'
+        id: '47',
+        name: 'Edward'
     },
     {
-        id: '8',
-        name: 'alice'
+        id: '48',
+        name: 'Edward'
     },
     {
-        id: '9',
-        name: 'alice'
+        id: '49',
+        name: 'Edward'
     },
     {
-        id: '10',
-        name: 'alice'
+        id: '50',
+        name: 'Edward'
     }, {
-        id: '1',
-        name: 'alice'
+        id: '61',
+        name: 'Frank'
     },
     {
-        id: '2',
-        name: 'alice'
+        id: '62',
+        name: 'Frank'
     },
     {
-        id: '3',
-        name: 'alice'
+        id: '63',
+        name: 'Frank'
     },
     {
-        id: '4',
-        name: 'alice'
+        id: '64',
+        name: 'Frank'
     },
     {
-        id: '5',
-        name: 'alice'
+        id: '65',
+        name: 'Frank'
     },
     {
-        id: '6',
-        name: 'alice'
+        id: '66',
+        name: 'Frank'
     },
     {
-        id: '7',
-        name: 'alice'
+        id: '67',
+        name: 'Frank'
     },
     {
-        id: '8',
-        name: 'alice'
+        id: '68',
+        name: 'Frank'
     },
     {
-        id: '9',
-        name: 'alice'
+        id: '69',
+        name: 'Frank'
     },
     {
-        id: '10',
-        name: 'alice'
+        id: '70',
+        name: 'Frank'
     },
 ]
