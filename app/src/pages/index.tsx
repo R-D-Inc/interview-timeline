@@ -10,9 +10,9 @@ export type User = {
 	name: string;
 };
 
-export default function Home() {
+export default function Home(props: { users: User[] }) {
 	const [page, setPage] = useState(0);
-	const [clientFetchedUser, setClientFetchedUser] = useState<User[]>([]);
+	// const [clientFetchedUser, setClientFetchedUser] = useState<User[]>([]);
 	const handleBack = () => {
 		if (page === 0) return;
 		setPage(page - 1);
@@ -20,14 +20,14 @@ export default function Home() {
 	const handleNext = () => {
 		setPage(page + 1);
 	};
-	// const fetchedUser = props.users.slice(page * 10, page * 10 + 9);
-	useEffect(() => {
-		const fetchUserByPage = async (page) => {
-			const user = await fetchUsers(10, page);
-			setClientFetchedUser(user);
-		};
-		fetchUserByPage(page);
-	}, [page]);
+	const fetchedUser = props.users.slice(page * 10, page * 10 + 9);
+	// useEffect(() => {
+	// 	const fetchUserByPage = async (page) => {
+	// 		const user = await fetchUsers(10, page);
+	// 		setClientFetchedUser(user);
+	// 	};
+	// 	fetchUserByPage(page);
+	// }, [page]);
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -41,7 +41,7 @@ export default function Home() {
 
 				<button onClick={handleBack}>{"<<"}</button>
 				<ul>
-					{clientFetchedUser.map((user) => {
+					{fetchedUser.map((user) => {
 						return <li>{user.name}</li>;
 					})}
 				</ul>
@@ -64,12 +64,12 @@ export default function Home() {
 	);
 }
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-// 	const users = await fetchUsers(100, 0);
+export const getServerSideProps: GetServerSideProps = async () => {
+	const users = await fetchUsers(100, 0);
 
-// 	return {
-// 		props: {
-// 			users,
-// 		},
-// 	};
-// };
+	return {
+		props: {
+			users,
+		},
+	};
+};
