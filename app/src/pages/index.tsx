@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { fetchUsers } from "../libs/users";
 import styles from "../styles/Home.module.css";
 
@@ -23,17 +24,7 @@ export default function Home(props: { users: User[] }) {
 
         <button>{'<<'}</button>
         <div>
-          {(function () {  // fix me
-            const list = [];
-            for (let i = 0; i < props.users.length; i++) {
-              list.push(
-                <li>
-                  {props.users[i].name}
-                </li>
-              );
-            }
-            return <ul>{list}</ul>;
-          })()}
+          <ul>{props.users.map(user => <li key={user.id}>{user.name}</li>)}</ul>
         </div>
         <button>{'>>'}</button>
       </main>
