@@ -12,6 +12,14 @@ export type User = {
 
 export default function Home(props: { users: User[] }) {
   const [page, setPage] = useState<number>(0)
+  const [users, setUsers] = useState<User[]>(props.users)
+
+  useEffect(() => {
+    ; (async () => {
+      const fetchedUsers = await fetchUsers(10, page)
+      setUsers(fetchedUsers)
+    })
+  }, [page])
 
   const handlePrevButton = () => {
     if (page <= 0) return
@@ -35,7 +43,7 @@ export default function Home(props: { users: User[] }) {
 
         <button onClick={handlePrevButton}>{'<<'}</button>
         <div>
-          <ul>{props.users.slice(page * 10, (page + 1) * 10).map(user => <li key={user.id}>{user.name}</li>)}</ul>
+          <ul>{users.map(user => <li key={user.id}>{user.name}</li>)}</ul>
         </div>
         <button onClick={handleNextButton}>{'>>'}</button>
       </main>
@@ -57,7 +65,7 @@ export default function Home(props: { users: User[] }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const users = await fetchUsers(100, 0)
+  const users = await fetchUsers(10, 0)
 
   return {
     props: {
