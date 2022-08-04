@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchUsers } from "../libs/users";
 import styles from "../styles/Home.module.css";
@@ -43,7 +44,16 @@ export default function Home(props: { users: User[] }) {
 
         <button onClick={handlePrevButton}>{'<<'}</button>
         <div>
-          <ul>{users.map(user => <li key={user.id}>{user.name}</li>)}</ul>
+          <ul>{users.map(user => (
+            <li key={user.id}>
+              <Link href={{
+                pathname: '/users/[uid]',
+                query: { uid: user.id },
+              }}>
+                <a>{user.name}</a>
+              </Link>
+            </li>
+          ))}</ul>
         </div>
         <button onClick={handleNextButton}>{'>>'}</button>
       </main>
