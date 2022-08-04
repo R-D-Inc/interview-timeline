@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: focus_client_container
+    container_name: interview-timeline
     volumes:
       - ./app:/usr/src/app
       - /usr/src/app/node_modules
