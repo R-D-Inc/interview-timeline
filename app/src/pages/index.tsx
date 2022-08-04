@@ -11,6 +11,17 @@ export type User = {
 };
 
 export default function Home(props: { users: User[] }) {
+  const [page, setPage] = useState<number>(0)
+
+  const handlePrevButton = () => {
+    if (page <= 0) return
+    setPage(page - 1)
+  }
+
+  const handleNextButton = () => {
+    setPage(page + 1)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -22,11 +33,11 @@ export default function Home(props: { users: User[] }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome</h1>
 
-        <button>{'<<'}</button>
+        <button onClick={handlePrevButton}>{'<<'}</button>
         <div>
-          <ul>{props.users.map(user => <li key={user.id}>{user.name}</li>)}</ul>
+          <ul>{props.users.slice(page * 10, (page + 1) * 10).map(user => <li key={user.id}>{user.name}</li>)}</ul>
         </div>
-        <button>{'>>'}</button>
+        <button onClick={handleNextButton}>{'>>'}</button>
       </main>
 
       <footer className={styles.footer}>
@@ -46,7 +57,7 @@ export default function Home(props: { users: User[] }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const users = await fetchUsers(3, 0)
+  const users = await fetchUsers(100, 0)
 
   return {
     props: {
