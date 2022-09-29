@@ -1,20 +1,15 @@
-import content from '*.png'
-import { FirebaseError } from 'firebase/app'
-import { doc, Firestore, getDoc } from 'firebase/firestore'
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { type } from 'os'
-import { Context } from 'vm'
-import { db } from '../../libs/firebase'
+import fetchUserById from '../../libs/users/fetchUserById'
 import styles from '../../styles/Home.module.css'
 
 type User = {
   id: string
-  name:string
+  name: string
 }
 
-export default function Profile(props: {user: User}) {
+export default function Profile(props: { user: User }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,44 +19,8 @@ export default function Profile(props: {user: User}) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">{props.user.name}</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <h1 className={styles.title}>Welcome to {props.user.name}'s page</h1>
+        My ID is {props.user.id}
       </main>
 
       <footer className={styles.footer}>
@@ -80,17 +39,14 @@ export default function Profile(props: {user: User}) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  if(Array.isArray(query.uid)){
-    return 
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { uid } = query
+  if (typeof uid !== 'string') {
+    return {
+      notFound: true
+    }
   }
-  const uid: string = query.uid
-  const docRef = doc(db, "users", uid)
-  const userSnapshot = await getDoc(docRef)
-  const user = {
-    id: userSnapshot.id,
-    ...userSnapshot.data()
-  }
+  const user = await fetchUserById(uid)
   return {
     props: {
       user
