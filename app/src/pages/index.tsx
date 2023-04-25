@@ -3,13 +3,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { fetchUsers } from "../libs/users";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 export type User = {
   id: string;
   name: string;
 };
 
-export default function Home(props: { users: User[] }) {
+export default function Home(props: { users: User[], page: number }) {
+
+  console.log(props.page);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -21,21 +25,15 @@ export default function Home(props: { users: User[] }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome</h1>
 
-        <button>{'<<'}</button>
+        {props.page != 0 && <button>{<Link href={`http://localhost:3000/?page=${props.page - 1}`}>{'<<'}</Link>}</button>}
         <div>
           {(function () {  // fix me
             const list = [];
-            for (let i = 0; i < props.users.length; i++) {
-              list.push(
-                <li>
-                  {props.users[i].name}
-                </li>
-              );
-            }
+            for (let user of props.users) list.push(<li><Link href={`http://localhost:3000/users/${user.id}`}>{user.name}</Link></li>);
             return <ul>{list}</ul>;
           })()}
         </div>
-        <button>{'>>'}</button>
+        <button>{<Link href={`http://localhost:3000/?page=${props.page + 1}`}>{'>>'}</Link>}</button>
       </main>
 
       <footer className={styles.footer}>
@@ -54,12 +52,14 @@ export default function Home(props: { users: User[] }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const users = await fetchUsers(3, 0)
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const page = context.query.page != undefined ? Number(context.query?.page) : 0;
+  const users = await fetchUsers(10, page);
 
   return {
     props: {
       users,
+      page,
     },
   };
 };
