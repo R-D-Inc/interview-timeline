@@ -1,0 +1,10 @@
+.layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.center {
+    min-width: 600px;
+}
