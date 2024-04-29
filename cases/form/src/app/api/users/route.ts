@@ -14,7 +14,6 @@ export async function GET(request: Request) {
       resolve(r)
     })
   })
-  console.log({ rows })
   return Response.json(rows)
 }
 

@@ -5,6 +5,7 @@ import { FlexBox } from '@/components/FlexBox'
 import { useEffect, useState } from 'react'
 import styles from './page.module.scss'
 import { Input } from '@/components/Input'
+import { useMe } from '@/hooks/useMe'
 
 type User = {
   id: string
@@ -29,6 +30,7 @@ const deleteUser = (data: Pick<User, 'id'>) =>
   })
 
 export default function Page() {
+  const me = useMe()
   const [users, setUsers] = useState<User[]>([])
   const [modalOpen, setModalOpen] = useState(false)
   useEffect(() => {
@@ -41,8 +43,11 @@ export default function Page() {
   return (
     <main>
       <FlexBox flexDirection='column'>
+        <FlexBox justifyContent='center' width='100%' padding={'1rem'}>
+        Hello,  {me.name} ({me.role})
+        </FlexBox>
         <Button type='button' onClick={() => setModalOpen(true)}>
-          ユーザー作成
+          アカウント追加
         </Button>
         <table>
           <thead>
@@ -73,7 +78,6 @@ export default function Page() {
             action={async (formData) => {
               const name = formData.get('name')?.toString()
               const email = formData.get('email')?.toString()
-              console.log(name, email)
               if (!name || !email) return
               await createUser({ name, email })
               const newUsers = await getUsers().then((res) => res.json())
