@@ -1,4 +1,4 @@
-type Role = 'owner' | 'writer' | 'reader'
+type Role = 'owner' | 'writer' | 'viewer'
 type Administrator = {
     id: number
     name: string
