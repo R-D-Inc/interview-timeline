@@ -1,6 +1,6 @@
 version: "3"
 services:
-  app:
+  form:
     ports:
       - 3000:3000
     image: interview-form
