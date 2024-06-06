@@ -8,7 +8,7 @@ import { Input } from '@/components/Input'
 import { useMe } from '@/hooks/useMe'
 
 type User = {
-  id: string
+  id: number
   name: string
   email: string
 }
