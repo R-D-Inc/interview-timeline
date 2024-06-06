@@ -3,6 +3,7 @@ services:
   app:
     ports:
       - 3000:3000
+    image: interview-form
     build:
       context: .
       dockerfile: Dockerfile
