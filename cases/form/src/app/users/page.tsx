@@ -75,7 +75,13 @@ export default function Page() {
       {modalOpen && (
         <div>
           <form
-            action={async (formData) => {
+            onSubmit={async e => {
+              e.preventDefault()
+              const { target } = e
+              if (!(target instanceof HTMLFormElement)) {
+                return
+              }
+              const formData = new FormData(target)
               const name = formData.get('name')?.toString()
               const email = formData.get('email')?.toString()
               if (!name || !email) return
